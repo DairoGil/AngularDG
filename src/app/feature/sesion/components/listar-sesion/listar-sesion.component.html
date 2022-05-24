@@ -1,0 +1,19 @@
+<h1>Sesiones pendientes</h1>
+
+<form [formGroup]="pacienteForm" (ngSubmit)="consultar()">
+    <div class="row">    
+        <div class="col-sm-2">
+            <label>Id:</label>
+            <input type="text" id="idPaciente" name="idPaciente" placeholder="Id paciente" class="form-control"
+            formControlName="idPaciente">
+        </div>
+        <div class="col-sm-4">
+            <input id="buscar-sesiones" type="submit" value="Buscar sesiones" (click)="consultar()"/>
+        </div>
+    </div>
+</form>
+
+<app-resumen-sesion
+    *ngFor="let sesion of listaSesiones"
+    [sesion]="sesion"
+></app-resumen-sesion>

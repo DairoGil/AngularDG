@@ -1,0 +1,7 @@
+{
+  "/consultorio-psicologico": {
+    "target": "http://localhost:8180",
+    "logLevel": "debug"
+  }
+
+}
