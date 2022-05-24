@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-//import { Observable } from 'rxjs';
 import { DetalleSesion } from '../../shared/model/detalleSesion';
 import { SesionService } from '../../shared/service/sesion.service';
 
@@ -13,7 +12,6 @@ const LONGITUD_MAXIMA_PERMITIDA = 11;
 })
 export class ListarSesionComponent implements OnInit {
   pacienteForm: FormGroup;
-  //public listaSesiones: Observable<DetalleSesion[]>;
   public listaSesiones: DetalleSesion[];
 
   constructor(protected sesionService: SesionService) { }

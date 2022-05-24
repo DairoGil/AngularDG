@@ -1,4 +1,7 @@
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { HttpService } from '@core/services/http.service';
+import { DetalleSesion } from '../../shared/model/detalleSesion'
 
 import { ResumenSesionComponent } from './resumen-sesion.component';
 
@@ -8,7 +11,9 @@ describe('ResumenSesionComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ResumenSesionComponent ]
+      declarations: [ ResumenSesionComponent ],
+      imports: [HttpClientTestingModule],
+      providers: [HttpService]
     })
     .compileComponents();
   });
@@ -16,6 +21,9 @@ describe('ResumenSesionComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(ResumenSesionComponent);
     component = fixture.componentInstance;
+
+    let expectedDetalleSesion = new DetalleSesion(1, '2022-05-03',8, 'PENDIENTE','');
+    component.sesion = expectedDetalleSesion;
     fixture.detectChanges();
   });
 
