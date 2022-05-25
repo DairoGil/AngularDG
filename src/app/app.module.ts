@@ -6,7 +6,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { HomeComponent } from '@home/home.component';
 import { CoreModule } from '@core/core.module';
 import { CookieService } from 'ngx-cookie-service';
-import { SesionModule } from './feature/sesion/sesion.module';
+import { SesionModule } from '@sesion/sesion.module';
 
 @NgModule({
   declarations: [

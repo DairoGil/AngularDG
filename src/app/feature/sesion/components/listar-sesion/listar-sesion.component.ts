@@ -24,9 +24,8 @@ export class ListarSesionComponent implements OnInit {
   consultar() {
     this.sesionService.consultarSesionesPendientes(this.pacienteForm.value.idPaciente).subscribe(
       data => {
-        this.listaSesiones = data;
-      }
-    )
+        this.listaSesiones = data; 
+    });
   }
 
   private construirFormularioPaciente() {

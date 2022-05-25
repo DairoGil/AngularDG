@@ -32,6 +32,15 @@
       ],
       "@shared/*": [
         "src/app/shared/*"
+      ],
+      "@sesion/*": [
+        "src/app/feature/sesion/*"
+      ],
+      "@paciente/*": [
+        "src/app/feature/paciente/*"
+      ],
+      "@terapia/*": [
+        "src/app/feature/terapia/*"
       ]
     }
   },
