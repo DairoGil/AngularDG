@@ -14,7 +14,7 @@ describe('ListarSesionComponent', () => {
   let fixture: ComponentFixture<ListarSesionComponent>;
   let sesionService: SesionService;
   const listaSesiones: DetalleSesion[] = [
-    new DetalleSesion(1,'2022-06-25',8,'PENDIENTE', ''), new DetalleSesion(1,'2022-06-25',8,'PENDIENTE', '')
+    new DetalleSesion(1,'2022-06-25',8,'PENDIENTE', ''), new DetalleSesion(2,'2022-06-25',9,'PENDIENTE', '')
   ];
 
   beforeEach(async () => {
@@ -44,9 +44,9 @@ describe('ListarSesionComponent', () => {
   });
 
   it('deberia buscar las sesiones pendientes por codigo de paciente', () => {
-    sesionService.consultarSesionesPendientes(6).subscribe(
-      resultado => {
-        expect(resultado.length).toBe(2); 
-    });
-  })
+    component.consultar();
+    expect(component.listaSesiones.length).toBe(2);
+    expect(component.listaSesiones[0].id).toBe(1);
+    expect(component.listaSesiones[1].id).toBe(2);
+  });
 });
