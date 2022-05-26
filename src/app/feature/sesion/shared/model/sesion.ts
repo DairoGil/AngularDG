@@ -1,6 +1,6 @@
 export class Sesion {
     idPaciente: number;
-    fecha: String;
+    fecha: string;
     hora: number;
 
     constructor(idPaciente: number, fecha: string, hora: number) {

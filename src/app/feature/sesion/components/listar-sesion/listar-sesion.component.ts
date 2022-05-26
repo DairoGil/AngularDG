@@ -18,20 +18,19 @@ export class ListarSesionComponent implements OnInit {
 
   ngOnInit(): void {
     this.construirFormularioPaciente();
-    
   }
 
   consultar() {
     this.sesionService.consultarSesionesPendientes(this.pacienteForm.value.idPaciente).subscribe(
       data => {
-        this.listaSesiones = data; 
+        this.listaSesiones = data;
     });
   }
 
   private construirFormularioPaciente() {
     this.pacienteForm = new FormGroup({
       idPaciente: new FormControl('', [Validators.required, Validators.maxLength(LONGITUD_MAXIMA_PERMITIDA)])
-    })
+    });
   }
 
 }

@@ -14,7 +14,7 @@ describe('ListarSesionComponent', () => {
   let fixture: ComponentFixture<ListarSesionComponent>;
   let sesionService: SesionService;
   const listaSesiones: DetalleSesion[] = [
-    new DetalleSesion(1,'2022-06-25',8,'PENDIENTE', ''), new DetalleSesion(2,'2022-06-25',9,'PENDIENTE', '')
+    new DetalleSesion(1, '2022-06-25', 8, 'PENDIENTE', ''), new DetalleSesion(2, '2022-06-25', 9, 'PENDIENTE', '')
   ];
 
   beforeEach(async () => {

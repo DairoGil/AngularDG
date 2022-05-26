@@ -1,6 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { DetalleSesion } from '../../shared/model/detalleSesion';
-import { SesionService } from '../../shared/service/sesion.service';
 
 @Component({
   selector: 'app-resumen-sesion',
@@ -9,7 +8,7 @@ import { SesionService } from '../../shared/service/sesion.service';
 })
 export class ResumenSesionComponent implements OnInit {
 
-  constructor(protected sesionService: SesionService) { }
+  constructor() { }
 
   @Input()
   sesion: DetalleSesion;

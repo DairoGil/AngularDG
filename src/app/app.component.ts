@@ -15,6 +15,4 @@ export class AppComponent {
     { url: '/terapia', nombre: 'Terapias' },
     { url: '/sesion', nombre: 'Sesiones' }
   ];
-
-  
 }

@@ -1,0 +1,8 @@
+a { 
+    margin-right: 20px;
+    text-decoration: none;
+}
+
+a:hover {
+    color: blueviolet;
+}

@@ -16,8 +16,8 @@ import { SesionModule } from '@sesion/sesion.module';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    CoreModule,
-    SesionModule
+    SesionModule,
+    CoreModule
   ],
   providers: [CookieService],
     bootstrap: [AppComponent],

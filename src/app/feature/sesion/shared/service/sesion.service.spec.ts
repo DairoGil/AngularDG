@@ -9,14 +9,14 @@ import { SesionService } from './sesion.service';
 describe('SesionService', () => {
   let httpMock: HttpTestingController;
   let service: SesionService;
-  const apiEndpointSesionConsulta = `${environment.endpoint}/sesion/pendientes-paciente`
+  const apiEndpointSesionConsulta = `${environment.endpoint}/sesion/pendientes-paciente`;
 
   beforeEach(() => {
     const injector = TestBed.configureTestingModule({
       imports: [HttpClientTestingModule],
-      providers: [HttpService]
+      providers: [HttpService, SesionService]
     });
-    httpMock = injector.inject(HttpTestingController)
+    httpMock = injector.inject(HttpTestingController);
     service = TestBed.inject(SesionService);
   });
 
@@ -27,7 +27,7 @@ describe('SesionService', () => {
 
   it('deberia listar sesiones pendientes por paciente', () => {
     const dummySesiones = [
-      new DetalleSesion(1,'2022-06-25',8,'PENDIENTE', ''), new DetalleSesion(1,'2022-06-25',8,'PENDIENTE', '')
+      new DetalleSesion(1, '2022-06-25', 8, 'PENDIENTE', ''), new DetalleSesion(1, '2022-06-25', 8, 'PENDIENTE', '')
     ];
     service.consultarSesionesPendientes(6).subscribe(sesiones => {
       expect(sesiones.length).toBe(2);

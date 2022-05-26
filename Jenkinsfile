@@ -39,13 +39,6 @@ pipeline {
       }
     }
 
-    /*stage('Test end-to-end') {
-      steps{
-        echo "------------>Testing Protractor<------------"
-        sh 'npm run e2e'
-      }
-    }*/
-
     stage('Static Code Analysis') {
         steps{
             sonarqubeMasQualityGatesP(sonarKey:'co.com.ceiba:adn:consultoriopsicologico-front.dairo.gil',
