@@ -43,7 +43,15 @@ describe('ListarSesionComponent', () => {
     expect(component).toBeTruthy();
   });
 
+  it('formulario es invalido cuando esta vacio', () => {
+    expect(component.pacienteForm.valid).toBeFalsy();
+  });
+
   it('deberia buscar las sesiones pendientes por codigo de paciente', () => {
+    expect(component.pacienteForm.valid).toBeFalsy();
+    component.pacienteForm.controls.idPaciente.setValue(1);
+    expect(component.pacienteForm.valid).toBeTruthy();
+
     component.consultar();
     expect(component.listaSesiones.length).toBe(2);
     expect(component.listaSesiones[0].id).toBe(1);
