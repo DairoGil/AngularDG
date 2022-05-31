@@ -4,7 +4,7 @@
         <div class="mb-3 row">    
             <label class="col-sm-4 col-form-label">Id del paciente:</label>
             <div class="col-sm-8">
-                <input validar type="text" id="idPaciente" name="idPaciente" placeholder="Id paciente" class="form-control"
+                <input validar type="text" id="idPacienteAgendar" name="idPaciente" placeholder="Id paciente" class="form-control"
                 formControlName="idPaciente">
             </div>
         </div>
@@ -37,7 +37,7 @@
         </div>
         <div class="mb-3 row">
             <div class="col-auto">
-                <div id="registro-mensaje" [class]="clasesAlerta" *ngIf="this.mostrarMensaje">{{this.mensajeEstadoTransaccion}}</div>
+                <div id="agendar-mensaje" [class]="clasesAlerta" *ngIf="this.mostrarMensaje">{{this.mensajeEstadoTransaccion}}</div>
             </div>
         </div>
     </form>

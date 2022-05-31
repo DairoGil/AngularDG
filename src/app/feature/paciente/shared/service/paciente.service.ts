@@ -9,6 +9,7 @@ export class PacienteService {
   constructor(protected http: HttpService) { }
 
   public guardar(paciente: Paciente) {
+    console.log(paciente.fechaNacimiento);
     return this.http.doPost<Paciente, number>(`${environment.endpoint}/paciente`, paciente, this.http.optsName('registrar paciente'));
   }
 }

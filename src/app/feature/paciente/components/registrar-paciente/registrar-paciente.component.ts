@@ -36,6 +36,7 @@ export class RegistrarPacienteComponent implements OnInit {
   }
 
   registrar() {
+    console.log(this.pacienteForm.value.fechaNacimiento);
     this.pacienteService.guardar(this.pacienteForm.value).subscribe( () => {
       this.mostrarMensaje = true;
       this.clasesAlerta = 'alert alert-success';
