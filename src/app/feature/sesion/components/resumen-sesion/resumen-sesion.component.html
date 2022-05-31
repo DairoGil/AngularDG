@@ -1,4 +1,14 @@
-<p>{{ sesion.fecha }}</p>
-<p>{{ sesion.hora }}</p>
-<p>{{ sesion.estado }}</p>
-<p>{{ sesion.nota }}</p>
+<div class="container">
+    <div class="card">
+        <div class="card-body">
+            <div class="mb-3 row">
+                <h5 class="card-title">Fecha: {{ sesion.fecha | date: 'MMMM dd yyyy'}}</h5>
+                <h6 class="card-subtitle mb-2 text-muted">Hora: {{ sesion.hora }}</h6>
+                <div [class]="claseEstado" id="estado">Estado: <strong>{{ sesion.estado }}</strong></div>
+                <p class="card-text">Notas: </p>
+                <textarea id="notas" rows="3" disabled readonly>{{ sesion.nota }}</textarea>
+            </div>
+            <input type="button" class="btn btn-primary mb-3" value="Re-agendar">
+        </div>
+    </div>
+</div>

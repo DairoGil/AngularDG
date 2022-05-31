@@ -1,0 +1,13 @@
+#estado {
+    width: auto;
+    border-radius: 30px;
+}
+
+#notas {
+    width: 95%;
+    margin: 0px 10px;
+}
+
+.container {
+    margin-bottom: 10px;
+}

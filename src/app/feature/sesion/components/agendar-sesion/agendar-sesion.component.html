@@ -1,33 +1,44 @@
-<h1>Agendar Sesion</h1>
-
-<form [formGroup]="sesionForm" (ngSubmit)="agendar()">
-    <div class="row">    
-        <div class="col-sm-2">
-            <label>Id:</label>
-            <input validar type="text" id="idPaciente" name="idPaciente" placeholder="Id paciente" class="form-control"
-            formControlName="idPaciente">
+<div class="container">
+    <h1 class="text-center">Agendar Sesion</h1>
+    <form [formGroup]="sesionForm" (ngSubmit)="agendar()">
+        <div class="mb-3 row">    
+            <label class="col-sm-4 col-form-label">Id del paciente:</label>
+            <div class="col-sm-8">
+                <input validar type="text" id="idPaciente" name="idPaciente" placeholder="Id paciente" class="form-control"
+                formControlName="idPaciente">
+            </div>
         </div>
-    </div>
-    <div class="row">    
-        <div class="col-sm-2">
-            <label>Fecha:</label>
-            <input validar type="date" id="fecha" name="fecha" placeholder="Fecha sesión" class="form-control"
-            formControlName="fecha">
+        <div class="mb-3 row">
+            <label class="col-sm-4 col-form-label">Fecha:</label>
+            <div class="col-sm-6">
+                <input validar type="date" id="fecha" name="fecha" placeholder="Fecha sesión" (change)="validarFinSemana()" class="form-control"
+                formControlName="fecha" min= "{{minDate | date:'yyyy-MM-dd'}}" max="{{maxDate | date:'yyyy-MM-dd'}}">
+            </div>
         </div>
-    </div>
-    <div class="row">    
-        <div class="col-sm-2">
-            <label>Hora:</label>
-            <input validar type="number" id="hora" name="hora" placeholder="Hora sesión" class="form-control"
-            formControlName="hora" min="8" max="17">
+        <div class="mb-3 row">    
+            <label class="col-sm-4 col-form-label">Hora:</label>
+            <div class="col-sm-6">
+                <select validar class="form-control form-select" aria-label="Default select example" id="hora" name="hora"
+                formControlName="hora">
+                    <option value="{{espacio.valor}}" *ngFor="let espacio of horario">
+                        <div *ngIf="espacio.disponible; else elseBlock">{{espacio.hora}}</div>
+                        <ng-template #elseBlock>{{espacio.hora}} Ocupado</ng-template>
+                    </option>
+                  </select>
+            </div>
         </div>
-    </div>
-    <div class="row">
-        <div class="col-sm-4">
-            <input id="agendar-sesion" type="submit" value="Agendar sesion"/>
+        <div class="mb-3 row">
+            <div class="col-auto">
+                <input id="agendar-sesion" class="btn btn-primary mb-3" type="submit" value="Agendar sesion"/>
+            </div>
+            <div class="col-auto">
+                <input id="limpiar-campos" class="btn btn-secondary mb-3" type="button" value="Limpiar" (click)="limpiarCampos()"/>
+            </div>
         </div>
-    </div>
-    <div class="row">
-        <div id="registro-mensaje" class="alert alert-danger" *ngIf="this.mostrar">{{this.mensaje}}</div>
-    </div>
-</form>
+        <div class="mb-3 row">
+            <div class="col-auto">
+                <div id="registro-mensaje" [class]="clasesAlerta" *ngIf="this.mostrarMensaje">{{this.mensajeEstadoTransaccion}}</div>
+            </div>
+        </div>
+    </form>
+</div>

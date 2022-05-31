@@ -49,8 +49,8 @@ describe('AgendarSesionComponent', () => {
 
     component.agendar();
 
-    expect(component.mostrar).toEqual(true);
-    expect(component.mensaje).toEqual('Se agendo correctamente la sesión');
+    expect(component.mostrarMensaje).toEqual(true);
+    expect(component.mensajeEstadoTransaccion).toEqual('Se agendo correctamente la sesión');
   });
 
   it('agendando sesion servicio retorna error', () => {
@@ -65,8 +65,8 @@ describe('AgendarSesionComponent', () => {
     expect(component.sesionForm.valid).toBeTruthy();
 
     component.agendar();
-    
-    expect(component.mostrar).toEqual(true);
-    expect(component.mensaje).toEqual('error');
+
+    expect(component.mostrarMensaje).toEqual(true);
+    expect(component.mensajeEstadoTransaccion).toEqual('error');
   });
 });

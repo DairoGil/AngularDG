@@ -1,0 +1,46 @@
+<div class="container">
+    <h1>Registrar Paciente</h1>
+    <form [formGroup]="pacienteForm" (ngSubmit)="registrar()">
+        <div class="mb-3 row">    
+            <label class="col-sm-4 col-form-label">Identificación:</label>
+            <div class="col-sm-8">
+                <input validar type="text" id="idPaciente" name="idPaciente" placeholder="ex. 41052368" class="form-control"
+                formControlName="idPaciente">
+            </div>
+        </div>
+        <div class="mb-3 row">    
+            <label class="col-sm-4 col-form-label">Nombre:</label>
+            <div class="col-sm-8">
+                <input validar type="text" id="nombre" name="nombre" placeholder="nombre" class="form-control"
+                formControlName="nombre">
+            </div>
+        </div>
+        <div class="mb-3 row">
+            <label class="col-sm-4 col-form-label">Fecha Nacimiento:</label>
+            <div class="col-sm-6">
+                <input validar type="date" id="fechaNacimiento" name="fechaNacimiento" class="form-control"
+                formControlName="fechaNacimiento" min= "{{minDate | date:'yyyy-MM-dd'}}" max="{{maxDate | date:'yyyy-MM-dd'}}">
+            </div>
+        </div>
+        <div class="mb-3 row">    
+            <label class="col-sm-4 col-form-label">Telefono:</label>
+            <div class="col-sm-6">
+                <input type="text" id="telefono" name="telefono" placeholder="ex. +57 3152487501" class="form-control"
+                formControlName="telefono" max="15">
+            </div>
+        </div>
+        <div class="mb-3 row">
+            <div class="col-auto">
+                <input id="registrar-paciente" class="btn btn-primary mb-3" type="submit" value="Registrar"/>
+            </div>
+            <div class="col-auto">
+                <input id="limpiar-campos" class="btn btn-secondary mb-3" type="button" value="Limpiar" (click)="limpiarCampos()"/>
+            </div>
+        </div>
+        <div class="mb-3 row">
+            <div class="col-auto">
+                <div id="registro-mensaje" [class]="clasesAlerta" *ngIf="this.mostrarMensaje">{{this.mensajeEstadoTransaccion}}</div>
+            </div>
+        </div>
+    </form>    
+</div>

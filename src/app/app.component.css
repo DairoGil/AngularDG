@@ -4,3 +4,7 @@
     flex-flow: column;
   }
 
+#containers {
+    height: auto;
+    padding: 0;
+}

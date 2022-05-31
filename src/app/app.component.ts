@@ -10,9 +10,9 @@ import { MenuItem } from '@core/modelo/menu-item';
 export class AppComponent {
   title = 'app-base';
   public itemsServicios: MenuItem[] = [
-    { url: '/home', nombre: 'Home' },
-    { url: '/paciente', nombre: 'Pacientes' },
-    { url: '/terapia', nombre: 'Terapias' },
-    { url: '/sesion', nombre: 'Sesiones' }
+    { url: '/home', nombre: 'Inicio', icono: './assets/iconos/homeicono.ico'},
+    { url: '/paciente', nombre: 'Pacientes', icono: './assets/iconos/user.ico' },
+    { url: '/terapia', nombre: 'Terapias', icono: './assets/iconos/terapiav2.ico' },
+    { url: '/sesion', nombre: 'Sesiones', icono: './assets/iconos/agenda.ico'}
   ];
 }

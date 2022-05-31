@@ -4,7 +4,10 @@ import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Input } from '@a
   templateUrl: './error-campos-plantilla.component.html',
   styles: [`.hide {
     display: none;
-} `],
+  }
+  span {
+    font-size: smaller;
+  }`],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ErrorCamposPlantillaComponent {
