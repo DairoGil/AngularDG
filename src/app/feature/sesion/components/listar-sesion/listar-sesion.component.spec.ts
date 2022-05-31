@@ -33,7 +33,7 @@ describe('ListarSesionComponent', () => {
     fixture = TestBed.createComponent(ListarSesionComponent);
     component = fixture.componentInstance;
     sesionService = TestBed.inject(SesionService);
-    
+
     fixture.detectChanges();
   });
 
