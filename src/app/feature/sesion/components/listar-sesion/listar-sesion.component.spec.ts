@@ -5,7 +5,7 @@ import { HttpService } from '@core/services/http.service';
 import { DetalleSesion } from '@sesion/shared/model/detalleSesion';
 import { SesionService } from '@sesion/shared/service/sesion.service';
 import { SharedModule } from '@shared/shared.module';
-import { of } from 'rxjs';
+import { of, throwError } from 'rxjs';
 
 import { ListarSesionComponent } from './listar-sesion.component';
 
@@ -33,9 +33,7 @@ describe('ListarSesionComponent', () => {
     fixture = TestBed.createComponent(ListarSesionComponent);
     component = fixture.componentInstance;
     sesionService = TestBed.inject(SesionService);
-    spyOn(sesionService, 'consultarSesionesPendientes').and.returnValue(
-      of(listaSesiones)
-    );
+    
     fixture.detectChanges();
   });
 
@@ -48,13 +46,33 @@ describe('ListarSesionComponent', () => {
   });
 
   it('deberia buscar las sesiones pendientes por codigo de paciente', () => {
+    spyOn(sesionService, 'consultarSesionesPendientes').and.returnValue(
+      of(listaSesiones)
+    );
+
     expect(component.pacienteForm.valid).toBeFalsy();
     component.pacienteForm.controls.idPaciente.setValue(1);
     expect(component.pacienteForm.valid).toBeTruthy();
 
     component.consultar();
+
     expect(component.listaSesiones.length).toBe(2);
     expect(component.listaSesiones[0].id).toBe(1);
     expect(component.listaSesiones[1].id).toBe(2);
+  });
+
+  it('no encuentra sesiones pendientes para el paciente', () => {
+    spyOn(sesionService, 'consultarSesionesPendientes').and.returnValue(
+      throwError({status: 400, error: {mensaje: 'error'}
+      })
+    );
+    expect(component.pacienteForm.valid).toBeFalsy();
+    component.pacienteForm.controls.idPaciente.setValue(3);
+    expect(component.pacienteForm.valid).toBeTruthy();
+
+    component.consultar();
+
+    expect(component.mostrarMensaje).toEqual(true);
+    expect(component.mensajeEstadoTransaccion).toEqual('error');
   });
 });

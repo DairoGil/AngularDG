@@ -17,13 +17,28 @@ describe('ResumenSesionComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(ResumenSesionComponent);
     component = fixture.componentInstance;
-
-    const expectedDetalleSesion = new DetalleSesion(1, '2022-05-03', '8', 'PENDIENTE', '');
-    component.sesion = expectedDetalleSesion;
-    fixture.detectChanges();
   });
 
   it('should create', () => {
+    const expectedDetalleSesion = new DetalleSesion(1, '2022-05-03', '8', 'PENDIENTE', '');
+    component.sesion = expectedDetalleSesion;
+    fixture.detectChanges();
+
     expect(component).toBeTruthy();
+  });
+
+  it('should create con sesion pendiente', () => {
+    const expectedDetalleSesion = new DetalleSesion(1, '2022-05-03', '8', 'PENDIENTE', '');
+    component.sesion = expectedDetalleSesion;
+    fixture.detectChanges();
+
+    expect(component.claseEstado).toBe('alert alert-warning');
+  });
+
+  it('should create con sesion cumplida', () => {
+    const expectedDetalleSesion = new DetalleSesion(1, '2022-05-03', '8', 'CUMPLIDA', '');
+    component.sesion = expectedDetalleSesion;
+    fixture.detectChanges();
+    expect(component.claseEstado).toBe('alert alert-success');
   });
 });

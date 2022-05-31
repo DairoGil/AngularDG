@@ -38,24 +38,19 @@ export class AgendarSesionComponent implements OnInit {
   }
 
   agendar() {
-    if (!this.sesionForm.valid){
+    this.sesionService.guardar(this.sesionForm.value).subscribe( () => {
       this.mostrarMensaje = true;
-      this.clasesAlerta = 'alert alert-danger';
-      this.mensajeEstadoTransaccion = 'Faltan campos por llenar';
-    }else{
-      this.sesionService.guardar(this.sesionForm.value).subscribe( () => {
+      this.clasesAlerta = 'alert alert-success';
+      this.mensajeEstadoTransaccion = 'Se agendo correctamente la sesión';
+      this.sesionForm.reset();
+    },
+    error => {
+      if (error.error.mensaje != null){
         this.mostrarMensaje = true;
-        this.clasesAlerta = 'alert alert-success';
-        this.mensajeEstadoTransaccion = 'Se agendo correctamente la sesión';
-      },
-      error => {
-        if (error.error.mensaje != null){
-          this.mostrarMensaje = true;
-          this.clasesAlerta = 'alert alert-danger';
-          this.mensajeEstadoTransaccion = error.error.mensaje;
-        }
-      });
-    }
+        this.clasesAlerta = 'alert alert-danger';
+        this.mensajeEstadoTransaccion = error.error.mensaje;
+      }
+    });
   }
 
   private construirFormularioProducto() {

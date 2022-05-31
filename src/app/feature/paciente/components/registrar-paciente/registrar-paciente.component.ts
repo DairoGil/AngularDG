@@ -31,7 +31,7 @@ export class RegistrarPacienteComponent implements OnInit {
       idPaciente: new FormControl('', [Validators.required, Validators.maxLength(LONGITUD_MAXIMA_PERMITIDA_ID)]),
       nombre: new FormControl('', [Validators.required]),
       fechaNacimiento: new FormControl('', [Validators.required]),
-      telefono: new FormControl('', [Validators.required, , Validators.maxLength(LONGITUD_MAXIMA_PERMITIDA_TELEFONO)])
+      telefono: new FormControl('', [Validators.maxLength(LONGITUD_MAXIMA_PERMITIDA_TELEFONO)])
     });
   }
 
