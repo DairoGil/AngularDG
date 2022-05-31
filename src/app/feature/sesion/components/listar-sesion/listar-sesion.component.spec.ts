@@ -73,6 +73,22 @@ describe('ListarSesionComponent', () => {
     component.consultar();
 
     expect(component.mostrarMensaje).toEqual(true);
+    expect(component.clasesAlerta).toEqual('alert alert-danger');
     expect(component.mensajeEstadoTransaccion).toEqual('error');
+  });
+
+  it('al buscar las sesiones se produce un error sin mensaje', () => {
+    spyOn(sesionService, 'consultarSesionesPendientes').and.returnValue(
+      throwError({status: 400})
+    );
+    expect(component.pacienteForm.valid).toBeFalsy();
+    component.pacienteForm.controls.idPaciente.setValue(3);
+    expect(component.pacienteForm.valid).toBeTruthy();
+
+    component.consultar();
+
+    expect(component.mostrarMensaje).toEqual(false);
+    expect(component.clasesAlerta).toEqual('');
+    expect(component.mensajeEstadoTransaccion).toEqual('');
   });
 });

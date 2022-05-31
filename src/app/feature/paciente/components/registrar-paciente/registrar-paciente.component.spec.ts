@@ -73,6 +73,23 @@ describe('RegistrarPacienteComponent', () => {
     expect(component.mensajeEstadoTransaccion).toEqual('error');
   });
 
+  it('registrando paciente se produce un error sin mensaje', () => {
+    spyOn(pacienteService, 'guardar').and.returnValue(
+      throwError({status: 400})
+    );
+    expect(component.pacienteForm.valid).toBeFalsy();
+    component.pacienteForm.controls.idPaciente.setValue(1);
+    component.pacienteForm.controls.nombre.setValue('Paciente 1');
+    component.pacienteForm.controls.fechaNacimiento.setValue('2022-05-31');
+    expect(component.pacienteForm.valid).toBeTruthy();
+
+    component.registrar();
+
+    expect(component.mostrarMensaje).toEqual(false);
+    expect(component.clasesAlerta).toEqual('');
+    expect(component.mensajeEstadoTransaccion).toEqual('');
+  });
+
   it('validando la limpieza de campos', () => {
     component.limpiarCampos();
 

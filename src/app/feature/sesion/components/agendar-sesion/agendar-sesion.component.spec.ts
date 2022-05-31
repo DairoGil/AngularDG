@@ -73,6 +73,23 @@ describe('AgendarSesionComponent', () => {
     expect(component.mensajeEstadoTransaccion).toEqual('error');
   });
 
+  it('agendando sesion se produce un error sin mensaje', () => {
+    spyOn(sesionService, 'guardar').and.returnValue(
+      throwError({status: 400})
+    );
+    expect(component.sesionForm.valid).toBeFalsy();
+    component.sesionForm.controls.idPaciente.setValue(1);
+    component.sesionForm.controls.fecha.setValue('2022-05-31');
+    component.sesionForm.controls.hora.setValue(8);
+    expect(component.sesionForm.valid).toBeTruthy();
+
+    component.agendar();
+
+    expect(component.mostrarMensaje).toEqual(false);
+    expect(component.clasesAlerta).toEqual('');
+    expect(component.mensajeEstadoTransaccion).toEqual('');
+  });
+
   it('validando eleccion de dia sabado', () => {
     component.sesionForm.controls.fecha.setValue('2022-05-28');
 
