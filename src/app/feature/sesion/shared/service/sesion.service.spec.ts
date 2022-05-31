@@ -30,8 +30,8 @@ describe('SesionService', () => {
 
   it('deberia listar sesiones pendientes por paciente', () => {
     const dummySesiones = [
-      new DetalleSesion(1, '2022-06-25', 8, 'PENDIENTE', ''),
-      new DetalleSesion(1, '2022-06-25', 8, 'PENDIENTE', '')
+      new DetalleSesion(1, '2022-06-25', '8', 'PENDIENTE', ''),
+      new DetalleSesion(1, '2022-06-25', '8', 'PENDIENTE', '')
     ];
     service.consultarSesionesPendientes(6).subscribe(sesiones => {
       expect(sesiones.length).toBe(2);

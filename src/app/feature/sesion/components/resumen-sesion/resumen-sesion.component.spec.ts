@@ -18,7 +18,7 @@ describe('ResumenSesionComponent', () => {
     fixture = TestBed.createComponent(ResumenSesionComponent);
     component = fixture.componentInstance;
 
-    const expectedDetalleSesion = new DetalleSesion(1, '2022-05-03', 8, 'PENDIENTE', '');
+    const expectedDetalleSesion = new DetalleSesion(1, '2022-05-03', '8', 'PENDIENTE', '');
     component.sesion = expectedDetalleSesion;
     fixture.detectChanges();
   });
