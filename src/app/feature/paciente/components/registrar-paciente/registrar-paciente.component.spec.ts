@@ -75,7 +75,8 @@ describe('RegistrarPacienteComponent', () => {
 
   it('registrando paciente se produce un error sin mensaje', () => {
     spyOn(pacienteService, 'guardar').and.returnValue(
-      throwError({status: 400})
+      throwError({status: 400, error: {}
+      })
     );
     expect(component.pacienteForm.valid).toBeFalsy();
     component.pacienteForm.controls.idPaciente.setValue(1);

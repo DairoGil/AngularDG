@@ -75,7 +75,8 @@ describe('AgendarSesionComponent', () => {
 
   it('agendando sesion se produce un error sin mensaje', () => {
     spyOn(sesionService, 'guardar').and.returnValue(
-      throwError({status: 400})
+      throwError({status: 400, error: {}
+      })
     );
     expect(component.sesionForm.valid).toBeFalsy();
     component.sesionForm.controls.idPaciente.setValue(1);

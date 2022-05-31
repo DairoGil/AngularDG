@@ -79,7 +79,8 @@ describe('ListarSesionComponent', () => {
 
   it('al buscar las sesiones se produce un error sin mensaje', () => {
     spyOn(sesionService, 'consultarSesionesPendientes').and.returnValue(
-      throwError({status: 400})
+      throwError({status: 400, error: {}
+      })
     );
     expect(component.pacienteForm.valid).toBeFalsy();
     component.pacienteForm.controls.idPaciente.setValue(3);
