@@ -2,6 +2,11 @@
   "/consultorio-psicologico": {
     "target": "http://localhost:8180",
     "logLevel": "debug"
+  },
+  "/resource": {
+    "target": "https://www.datos.gov.co",
+    "logLevel": "debug",
+    "secure": false,
+    "changeOrigin": true
   }
-
 }

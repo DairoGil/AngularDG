@@ -48,7 +48,8 @@ describe('RegistrarPacienteComponent', () => {
     expect(component.pacienteForm.valid).toBeTruthy();
 
     component.registrar();
-
+    
+    expect(pacienteService.guardar).toHaveBeenCalled();
     expect(component.mostrarMensaje).toEqual(true);
     expect(component.clasesAlerta).toEqual('alert alert-success');
     expect(component.mensajeEstadoTransaccion).toEqual('Se registro correctamente el paciente');

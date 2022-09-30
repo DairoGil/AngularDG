@@ -49,15 +49,11 @@ describe('workspace-project Sesion', () => {
         paciente.clickInputRegistrar();
 
         let fecha = new Date();
-        console.log(fecha);
         fecha.setDate(fecha.getDate() + 3);
         let i = 0;
-        console.log(fecha);
-        console.log(`${formatDate(fecha, 'MMddyyyy', 'en-US')}`);
         const mensajeEstadoTransaccion = element(by.id('agendar-mensaje'));
 
         while(i < 365){
-            console.log('entro');
             page.navigateTo();
             navBar.clickBotonSesion();
             sesion.clickBotonAgendarSesion();
@@ -69,7 +65,6 @@ describe('workspace-project Sesion', () => {
                 break;
             }
             fecha.setDate(fecha.getDate() + 1);
-            console.log(`${formatDate(fecha, 'MMddyyyy', 'en-US')}`);
             i++;
         }
         expect(mensajeEstadoTransaccion.getText()).toBe('Se agendo correctamente la sesión');
